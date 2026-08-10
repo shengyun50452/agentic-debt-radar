@@ -24,6 +24,8 @@ It does **not** clone a repository, execute or build code, read file contents, a
 
 The scan is free and requires no account or email. After seeing a completed report, a visitor may optionally apply for a proposed 30-day design pilot for one private repository: read-only tree and repository metadata, a weekly change summary, evidence-linked drift alerts, and one prioritized remediation review. The expected ongoing price is **USD 149 per repository per month**. The form tests fit, timing, and price response; it creates no private access, active service, payment, contract, or guarantee.
 
+A completed report can also create a shareable re-run link. It contains only the public repository name. Opening it pre-fills the repository but does not scan anything; every recipient must review the URL, complete the security check, and deliberately run the probe.
+
 This repository is the public documentation and voluntary-feedback surface for the probe. The implementation, operating controls, and collected market data remain private. It is not a claim that an incorporated company, consultancy, security auditor, or open-source project exists.
 
 ## Challenge the evidence
