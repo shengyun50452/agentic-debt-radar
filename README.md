@@ -12,6 +12,8 @@ Agentic Debt Radar is an early-stage repository-readiness probe operated by **Sh
 
 Prefer to inspect the mechanism first? [Read the versioned five-dimension method and its limits](https://agentic-debt-radar.romispshop.workers.dev/method).
 
+Want to see the output before submitting a repository? [Open the static illustrative report](https://agentic-debt-radar.romispshop.workers.dev/example). It uses a disclosed synthetic fixture, starts no scan, and never counts as market evidence.
+
 ## What the probe inspects
 
 For an exact public GitHub repository URL, the probe reads only:
