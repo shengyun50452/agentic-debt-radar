@@ -22,7 +22,7 @@ It does **not** clone a repository, execute or build code, read file contents, a
 
 ## The market test
 
-The scan is free and requires no account or email. After seeing a completed report, a visitor may optionally request a pilot for continuous private-repository monitoring at an expected **USD 149 per repository per month**. The form creates no payment, contract, or service guarantee.
+The scan is free and requires no account or email. After seeing a completed report, a visitor may optionally apply for a proposed 30-day design pilot for one private repository: read-only tree and repository metadata, a weekly change summary, evidence-linked drift alerts, and one prioritized remediation review. The expected ongoing price is **USD 149 per repository per month**. The form tests fit, timing, and price response; it creates no private access, active service, payment, contract, or guarantee.
 
 This repository is the public documentation and voluntary-feedback surface for the probe. The implementation, operating controls, and collected market data remain private. It is not a claim that an incorporated company, consultancy, security auditor, or open-source project exists.
 
@@ -30,4 +30,4 @@ This repository is the public documentation and voluntary-feedback surface for t
 
 Tree-level signals have limits. If a report inferred something that repository structure alone cannot support, use the structured **Tree-evidence counterexample** issue form. Share only information that is already public. Never post private repository details, credentials, personal data, or an undisclosed vulnerability.
 
-Security or privacy concerns should be reported privately to **romispshop@gmail.com**, not through a public issue. The [public privacy notice](https://agentic-debt-radar.romispshop.workers.dev/privacy.html) explains the data boundary and 30-day retention period.
+Security or privacy concerns should be reported privately to **romispshop@gmail.com**, not through a public issue. The [public privacy notice](https://agentic-debt-radar.romispshop.workers.dev/privacy) explains the data boundary and 30-day retention period.
