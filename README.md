@@ -32,9 +32,10 @@ If the pilot is relevant, the deliberate path is:
 
 1. run the free public-repository report and review its evidence and limits;
 2. submit the optional linked fit form only if the displayed scope, timing, and USD 149/repo/month expectation are worth evaluating;
-3. if the server confirms that the scan and buying context meet the current rule, reconfirm the concrete problem and choose a real next step.
+3. if the server confirms that the scan and buying context meet the current rule, reconfirm the concrete problem and choose a real next step; and
+4. for any non-withdrawn choice, send the minimal applicant-controlled notification from the same email address so the operator knows to reply.
 
-The second step is still an application signal—not proof of identity, a purchase, or an active service. An optional notification opens in the applicant's own mail client and sends nothing automatically. Never provide private code, credentials, access tokens, or repository access through this flow.
+The second step is still an application signal—not proof of identity, a purchase, or an active service. Stored confirmations are not monitored. The final notification opens in the applicant's own mail client, sends nothing automatically, and is required only when the applicant wants an operator response. Never provide private code, credentials, access tokens, or repository access through this flow.
 
 A completed report can also create a shareable re-run link. It contains only the public repository name. Opening it pre-fills the repository but does not scan anything; every recipient must review the URL, complete the security check, and deliberately run the probe.
 
