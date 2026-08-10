@@ -1,0 +1,54 @@
+name: Tree-evidence counterexample
+description: Show where visible repository structure makes a readiness signal misleading.
+title: "[counterexample] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for challenging the method. Share public, technical evidence only. Do not include private repository details, credentials, personal data, or vulnerabilities. Security and privacy concerns belong in private email to romispshop@gmail.com.
+  - type: dropdown
+    id: dimension
+    attributes:
+      label: Signal dimension
+      description: Which part of the report needs correction?
+      options:
+        - Agent context
+        - Verification
+        - Change containment
+        - Recovery
+        - Review ergonomics
+        - Market eligibility or another limitation
+    validations:
+      required: true
+  - type: input
+    id: public_repository
+    attributes:
+      label: Public repository URL (optional)
+      description: Include only an already-public GitHub repository that you are permitted to discuss.
+      placeholder: https://github.com/owner/repository
+  - type: textarea
+    id: observed_inference
+    attributes:
+      label: What did the report infer?
+      description: Describe the exact signal or wording, without copying secrets or personal data.
+    validations:
+      required: true
+  - type: textarea
+    id: missing_context
+    attributes:
+      label: Why is tree-level evidence insufficient here?
+      description: Explain the public fact or context that makes the inference misleading.
+    validations:
+      required: true
+  - type: textarea
+    id: safer_interpretation
+    attributes:
+      label: Safer interpretation (optional)
+      description: Suggest a narrower claim, limitation, or evidence rule.
+  - type: checkboxes
+    id: disclosure
+    attributes:
+      label: Public disclosure check
+      options:
+        - label: I confirm this issue contains no private repository information, credentials, personal data, or undisclosed vulnerability.
+          required: true
