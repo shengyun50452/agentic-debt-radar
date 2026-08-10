@@ -24,6 +24,14 @@ It does **not** clone a repository, execute or build code, read file contents, a
 
 The scan is free and requires no account or email. The report is one public tree snapshot; the proposed pilot tests whether new agent-driven changes create review and maintenance drift over 30 days. After seeing a completed report, a visitor may optionally apply for that design pilot for one private repository: read-only tree and repository metadata, a weekly change summary, evidence-linked drift alerts, and one prioritized remediation review. The expected ongoing price is **USD 149 per repository per month**. The form tests fit, timing, and price response; it creates no private access, active service, payment, contract, or guarantee.
 
+If the pilot is relevant, the deliberate path is:
+
+1. run the free public-repository report and review its evidence and limits;
+2. submit the optional linked fit form only if the displayed scope, timing, and USD 149/repo/month expectation are worth evaluating;
+3. if the server confirms that the scan and buying context meet the current rule, reconfirm the concrete problem and choose a real next step.
+
+The second step is still an application signal—not proof of identity, a purchase, or an active service. An optional notification opens in the applicant's own mail client and sends nothing automatically. Never provide private code, credentials, access tokens, or repository access through this flow.
+
 A completed report can also create a shareable re-run link. It contains only the public repository name. Opening it pre-fills the repository but does not scan anything; every recipient must review the URL, complete the security check, and deliberately run the probe.
 
 This repository is the public documentation and voluntary-feedback surface for the probe. The implementation, operating controls, and collected market data remain private. It is not a claim that an incorporated company, consultancy, security auditor, or open-source project exists.
