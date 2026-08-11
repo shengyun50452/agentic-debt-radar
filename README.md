@@ -8,6 +8,8 @@
 
 Agentic Debt Radar is an early-stage repository-readiness probe operated by **Sheng-Yun**. It asks a narrow question: when coding agents increase delivery speed, which visible repository conditions could make the next change harder to bound, verify, recover, or review?
 
+Before sustained work with Codex, Claude Code, Cursor, or a similar coding agent, a useful preflight asks whether the visible repository tree provides five controls: scoped agent instructions, a verification loop, bounded change areas, a recovery path, and a clear human review boundary. The probe maps those same questions to evidence-linked observations without claiming that a visible file proves the underlying practice works.
+
 **[Run the free public-repository probe](https://agentic-debt-radar.romispshop.workers.dev/?source=github_probe_repo)**
 
 Prefer to inspect the mechanism first? [Read the versioned five-dimension method and its limits](https://agentic-debt-radar.romispshop.workers.dev/method).
