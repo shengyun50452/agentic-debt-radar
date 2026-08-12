@@ -1,0 +1,38 @@
+name: Tree-evidence counterexample
+description: Challenge a public-tree-only inference without sharing private material.
+title: "Tree evidence: "
+labels:
+  - tree-evidence-counterexample
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This form is for a limitation or counterexample to a public-tree inference. Do not include source code, private paths, credentials, personal data, or vulnerabilities. Security and privacy concerns belong in the private channel in SECURITY.md.
+  - type: input
+    id: visible-path
+    attributes:
+      label: Public visible path
+      description: Name only a path already visible in a public repository tree.
+    validations:
+      required: true
+  - type: textarea
+    id: challenged-inference
+    attributes:
+      label: Inference challenged
+      description: State which of the five dimension observations is misleading and why path-level evidence is insufficient.
+    validations:
+      required: true
+  - type: textarea
+    id: public-counterexample
+    attributes:
+      label: Public-only counterexample
+      description: Share only information already public. Do not include a private URL, source, credential, personal data, or vulnerability detail.
+    validations:
+      required: true
+  - type: checkboxes
+    id: boundary
+    attributes:
+      label: Safety boundary
+      options:
+        - label: I have not included private repository information, source code, credentials, personal data, or a vulnerability.
+          required: true

@@ -1,0 +1,15 @@
+{
+  "name": "agentic-debt-radar-public",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A zero-dependency public-tree-only repository-readiness MVP.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "example": "node bin/agentic-debt-radar.js analyze fixtures/synthetic-public-tree.v1.json",
+    "test": "node --test",
+    "check": "node scripts/check.js"
+  }
+}

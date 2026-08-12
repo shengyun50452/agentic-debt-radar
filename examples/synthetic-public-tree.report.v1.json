@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "reportKind": "agentic_debt_radar_public_tree_report",
+  "analyzerVersion": "agentic-debt-radar-public-mvp-v1",
+  "repository": {
+    "publicUrl": "https://github.com/example/warehouse-console",
+    "defaultBranch": "main"
+  },
+  "snapshot": {
+    "entryCount": 9,
+    "totalReportedBytes": 15530,
+    "disclosure": {
+      "synthetic": true,
+      "createdFor": "illustrative public MVP report",
+      "containsRepositoryCode": false
+    },
+    "provenance": {
+      "kind": "locally_supplied_unverified_no_remote_verification",
+      "repositoryUrlVerified": false,
+      "defaultBranchVerified": false,
+      "treeCompletenessVerified": false
+    },
+    "sha256": "80095f02f7a1751ee1ee9e5323b1b63cbac14bb128a5620fe8df84607ab302ec"
+  },
+  "scope": {
+    "publicTreeOnly": true,
+    "clonedRepository": false,
+    "executedRepositoryCode": false,
+    "readRepositoryFileContents": false,
+    "networkRequestMade": false,
+    "credentialRead": false
+  },
+  "marketEvidence": {
+    "status": "not_established_by_this_report",
+    "primaryLossesAddressed": [
+      "trust",
+      "message_understanding",
+      "experienced_value"
+    ],
+    "counterexample": "A complete report, a visible signal, or a more complete repository does not establish customer demand, experienced value, or willingness to pay.",
+    "nextHypothesisLayerRule": "Change only the nearest evidenced layer: trust/message-understanding, experienced-value, problem strength, paid intent, or real next step."
+  },
+  "dimensions": [
+    {
+      "id": "agent_context",
+      "label": "Agent context",
+      "question": "Does the visible tree expose scoped instructions or context for agent-assisted changes?",
+      "observation": "visible_signal",
+      "evidencePaths": [
+        "AGENTS.md"
+      ],
+      "counterexample": "Visible instruction paths do not show whether their guidance is current, scoped correctly, or followed.",
+      "limitation": "This observation uses path names and reported sizes only; no file contents or runtime behavior were inspected."
+    },
+    {
+      "id": "verification",
+      "label": "Verification loop",
+      "question": "Does the visible tree expose a verification loop that a reviewer can inspect?",
+      "observation": "visible_signal",
+      "evidencePaths": [
+        "test/dispatch.test.js",
+        ".github/workflows/test.yml"
+      ],
+      "counterexample": "Test or workflow paths do not prove they run, cover the changed behavior, or pass for the current branch.",
+      "limitation": "This observation uses path names and reported sizes only; no file contents or runtime behavior were inspected."
+    },
+    {
+      "id": "change_containment",
+      "label": "Change containment",
+      "question": "Does the visible tree expose boundaries that can help contain a change?",
+      "observation": "visible_signal",
+      "evidencePaths": [
+        "src/",
+        "test/",
+        "docs/"
+      ],
+      "counterexample": "Separate top-level paths do not prove module ownership, dependency direction, or that a change is safely contained.",
+      "limitation": "This observation uses path names and reported sizes only; no file contents or runtime behavior were inspected."
+    },
+    {
+      "id": "recovery",
+      "label": "Recovery path",
+      "question": "Does the visible tree expose a recovery or rollback path?",
+      "observation": "visible_signal",
+      "evidencePaths": [
+        "docs/rollback.md"
+      ],
+      "counterexample": "A recovery-looking path does not prove the procedure is tested, current, or usable under an incident.",
+      "limitation": "This observation uses path names and reported sizes only; no file contents or runtime behavior were inspected."
+    },
+    {
+      "id": "human_review",
+      "label": "Human review boundary",
+      "question": "Does the visible tree expose a human review boundary?",
+      "observation": "visible_signal",
+      "evidencePaths": [
+        ".github/pull_request_template.md"
+      ],
+      "counterexample": "Review-related paths do not prove the right reviewer sees or approves a change.",
+      "limitation": "This observation uses path names and reported sizes only; no file contents or runtime behavior were inspected."
+    }
+  ],
+  "prioritizedActions": [
+    {
+      "priority": 1,
+      "dimension": "agent_context",
+      "action": "Review whether the visible agent context evidence is current and covers the next agent-assisted change.",
+      "reason": "Visible instruction paths do not show whether their guidance is current, scoped correctly, or followed."
+    },
+    {
+      "priority": 2,
+      "dimension": "verification",
+      "action": "Review whether the visible verification loop evidence is current and covers the next agent-assisted change.",
+      "reason": "Test or workflow paths do not prove they run, cover the changed behavior, or pass for the current branch."
+    },
+    {
+      "priority": 3,
+      "dimension": "change_containment",
+      "action": "Review whether the visible change containment evidence is current and covers the next agent-assisted change.",
+      "reason": "Separate top-level paths do not prove module ownership, dependency direction, or that a change is safely contained."
+    }
+  ],
+  "limitations": [
+    "Path-level evidence cannot show whether a process works in practice.",
+    "The supplied repository URL, default branch, and tree completeness were not fetched or remotely verified.",
+    "Missing paths may reflect naming, snapshot limits, generated files, or an unobserved process.",
+    "This report is not a security audit, code-quality verdict, developer assessment, or AI-authorship assessment."
+  ],
+  "pilotExpectation": {
+    "priceUsdPerRepositoryPerMonth": 149,
+    "status": "expectation_to_test_not_an_offer_or_proven_demand"
+  }
+}

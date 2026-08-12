@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "id": "agentic-debt-radar-public-mvp-v1",
+  "state": "public_example_ready_market_evidence_not_yet_established",
+  "operator": {
+    "name": "Sheng-Yun",
+    "relationship": "individual operator",
+    "companyClaimed": false
+  },
+  "audience": "Technical founders and engineering leads at small teams using coding agents weekly.",
+  "problem": "Before increasing agent-driven delivery speed, a technical leader may lack a quick, evidence-linked way to discuss whether the visible repository tree supports bounded changes, verification, recovery, and review.",
+  "valueProposition": "A transparent public-tree-only preflight turns a supplied public tree snapshot into five limited observations, counterexamples, and three prioritized next checks without cloning, executing, or reading repository contents.",
+  "inputBoundary": {
+    "acceptedInput": "A locally supplied JSON snapshot of public repository metadata, visible paths, and reported file sizes.",
+    "snapshotProvenance": "locally_supplied_unverified_no_remote_verification",
+    "repositoryUrlBranchAndTreeCompletenessVerified": false,
+    "doesNotCloneRepository": true,
+    "doesNotExecuteRepositoryCode": true,
+    "doesNotReadRepositoryFileContents": true,
+    "doesNotMakeNetworkRequests": true,
+    "doesNotAcceptCredentials": true
+  },
+  "dimensions": [
+    {
+      "id": "agent_context",
+      "question": "Does the visible tree expose scoped instructions or context for agent-assisted changes?"
+    },
+    {
+      "id": "verification",
+      "question": "Does the visible tree expose a verification loop that a reviewer can inspect?"
+    },
+    {
+      "id": "change_containment",
+      "question": "Does the visible tree expose boundaries that can help contain a change?"
+    },
+    {
+      "id": "recovery",
+      "question": "Does the visible tree expose a recovery or rollback path?"
+    },
+    {
+      "id": "human_review",
+      "question": "Does the visible tree expose a human review boundary?"
+    }
+  ],
+  "reportContract": {
+    "observationLabels": [
+      "visible_signal",
+      "not_visible_in_snapshot",
+      "insufficient_tree_evidence"
+    ],
+    "prioritizedActions": 3,
+    "counterexampleRequiredForEachObservation": true,
+    "doesNotProduce": [
+      "code-quality verdict",
+      "security audit",
+      "developer-performance assessment",
+      "AI-authorship detection",
+      "claim that a visible file works in practice"
+    ]
+  },
+  "pilot": {
+    "scope": "One private repository: read-only tree and metadata, weekly change summary, evidence-linked drift alerts, and one prioritized remediation review.",
+    "expectedPriceUsdPerRepositoryPerMonth": 149,
+    "priceStatus": "expectation_to_test_not_an_offer_or_proven_demand",
+    "doesNotCreate": [
+      "private access",
+      "active service",
+      "payment",
+      "contract",
+      "guarantee"
+    ]
+  },
+  "evidenceMapping": {
+    "primaryLossesAddressed": [
+      "trust",
+      "message_understanding",
+      "experienced_value"
+    ],
+    "observableEvents": [
+      {
+        "id": "public_example_report_completed",
+        "meaning": "A visitor deliberately generated or inspected the disclosed synthetic report; it is not market demand or a commercial signal."
+      },
+      {
+        "id": "public_tree_counterexample_submitted",
+        "meaning": "A visitor supplied a public-only counterexample to a tree-level inference; it can challenge method clarity, not prove buyer demand."
+      },
+      {
+        "id": "eligible_public_report_completed",
+        "meaning": "A completed report for a visitor-selected public repository can test whether the message and method are understandable; it does not establish experienced value or willingness to pay."
+      },
+      {
+        "id": "optional_pilot_fit_application",
+        "meaning": "An applicant explicitly evaluates the stated USD 149 expectation and scope; it is an application signal, not payment, a contract, or verified demand."
+      },
+      {
+        "id": "human_confirmed_paid_intent",
+        "meaning": "Only an independently reviewed, consented, concrete paid next step may support a paid-intent conclusion."
+      }
+    ],
+    "counterexamples": [
+      "A visible path does not prove the instruction, test, recovery, or review process is current or effective.",
+      "No completed public report, counterexample, fit application, or human-confirmed paid-intent event exists in this repository at this version.",
+      "A visitor may understand the report yet find no maintenance problem, no urgency, or no value at USD 149."
+    ],
+    "nearestHypothesisLayerRule": "When an observation conflicts with the MVP, change only the nearest layer evidenced by that observation: trust/message-understanding, experienced-value, problem strength, paid intent, or real next step. Do not treat completeness, publication, views, or a new feature as evidence by itself."
+  },
+  "limitations": [
+    "The supplied repository URL, default branch, and tree completeness are not fetched or remotely verified.",
+    "Paths and sizes are structure-level evidence only; this MVP does not inspect file contents.",
+    "The synthetic fixture is illustrative and cannot validate a customer problem, willingness to pay, or operational effectiveness.",
+    "Missing paths can reflect snapshot limits, naming differences, generated files, or an unobserved process; they are prompts for review, not negative findings.",
+    "The MVP does not clone, build, execute, authenticate to, or modify a target repository."
+  ],
+  "securityBoundary": "Use only snapshots of repositories you may inspect. Never include private paths, source, credentials, personal data, or undisclosed vulnerabilities."
+}

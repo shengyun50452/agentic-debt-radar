@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "snapshotKind": "agentic_debt_radar_public_tree_snapshot",
+  "repository": {
+    "publicUrl": "https://github.com/example/warehouse-console",
+    "defaultBranch": "main"
+  },
+  "tree": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 2410
+    },
+    {
+      "path": "README.md",
+      "bytes": 3820
+    },
+    {
+      "path": "package.json",
+      "bytes": 930
+    },
+    {
+      "path": "src/dispatch/create-shipment.js",
+      "bytes": 1560
+    },
+    {
+      "path": "src/dispatch/cancel-shipment.js",
+      "bytes": 1180
+    },
+    {
+      "path": "test/dispatch.test.js",
+      "bytes": 2730
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "bytes": 660
+    },
+    {
+      "path": ".github/workflows/test.yml",
+      "bytes": 1030
+    },
+    {
+      "path": "docs/rollback.md",
+      "bytes": 1210
+    }
+  ],
+  "disclosure": {
+    "synthetic": true,
+    "createdFor": "illustrative public MVP report",
+    "containsRepositoryCode": false
+  }
+}
