@@ -1,3 +1,28 @@
+# Keep every tracked text file byte-stable across Windows fresh clones.  The
+# public example is a serialized contract, so its LF bytes are product-test
+# input rather than a platform-specific checkout preference.
+* text=auto eol=lf
+
+# Media must remain opaque binary bytes; never attempt line-ending conversion.
+*.mp4 -text
+*.png -text
+*.jpg -text
+*.jpeg -text
+*.gif -text
+*.webp -text
+*.ico -text
+*.avif -text
+*.webm -text
+*.mov -text
+*.mp3 -text
+*.wav -text
+*.pdf -text
+*.zip -text
+*.woff -text
+*.woff2 -text
+*.ttf -text
+*.otf -text
+
 # Hash-bound local-CI release evidence must be byte-stable across Windows clones.
 .github/workflow-candidates/local-ci-host.v1.yml text eol=lf
 scripts/start-agentic-debt-radar-public-local-ci-runner.ps1 text eol=lf
