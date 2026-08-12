@@ -28,6 +28,13 @@ for (const field of ["dependencies", "devDependencies", "optionalDependencies", 
   assert.deepEqual(manifest[field] ?? {}, {}, `MVP must retain zero ${field}.`);
 }
 
+const canonicalPrivacyUrl = "https://agentic-debt-radar.romispshop.workers.dev/privacy";
+for (const documentationFile of ["README.md", "SECURITY.md", ".github/ISSUE_TEMPLATE/config.yml"]) {
+  const source = await readFile(path.join(repositoryRoot, documentationFile), "utf8");
+  assert.equal(source.includes(canonicalPrivacyUrl), true, `${documentationFile} must link to the canonical public privacy notice.`);
+  assert.equal(source.includes(`${canonicalPrivacyUrl}.html`), false, `${documentationFile} must not link to the non-canonical privacy asset.`);
+}
+
 const contract = JSON.parse(await readFile(
   path.join(repositoryRoot, "contract/agentic-debt-radar-mvp.v1.json"),
   "utf8",
