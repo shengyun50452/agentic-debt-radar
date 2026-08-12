@@ -1,0 +1,12 @@
+# Hash-bound local-CI release evidence must be byte-stable across Windows clones.
+.github/workflow-candidates/local-ci-host.v1.yml text eol=lf
+scripts/start-agentic-debt-radar-public-local-ci-runner.ps1 text eol=lf
+ci/repository-ci-command.v1.json text eol=lf
+deploy/local-ci-host/runner-candidate.v1.json text eol=lf
+scripts/check-local-ci-host.ps1 text eol=lf
+scripts/invoke-repository-ci.ps1 text eol=lf
+test/local-ci-host-contract.ps1 text eol=lf
+
+# The public runtime-policy contract compares exact tracked file content.
+.codex/config.toml text eol=lf
+test/codex-runtime-config-policy.test.js text eol=lf

@@ -1,0 +1,10 @@
+# Project-scoped runtime defaults for direct Codex tasks in this public repository.
+model = "gpt-5.6-sol"
+model_reasoning_effort = "max"
+
+[agents]
+default_subagent_model = "gpt-5.6-terra"
+default_subagent_reasoning_effort = "high"
+max_concurrent_threads_per_session = 8
+
+# Dispatch xhigh explicitly only for cross-module, release, security, or difficult debugging work.
