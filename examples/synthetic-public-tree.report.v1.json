@@ -30,6 +30,11 @@
     "networkRequestMade": false,
     "credentialRead": false
   },
+  "inputDisclosure": {
+    "classification": "synthetic_illustration",
+    "customerVisibleStatement": "This is a synthetic illustration, not evidence about a customer repository, customer problem, or demand.",
+    "decisionBoundary": "Use it only to evaluate whether the report format and limitations are understandable; do not use it to make repository or purchase decisions."
+  },
   "marketEvidence": {
     "status": "not_established_by_this_report",
     "primaryLossesAddressed": [

@@ -213,6 +213,32 @@ function actionForVisibleDimensions(dimensions, existing) {
   return existing;
 }
 
+function inputDisclosureForReport(disclosure) {
+  if (disclosure.synthetic) {
+    return Object.freeze({
+      classification: "synthetic_illustration",
+      customerVisibleStatement:
+        "This is a synthetic illustration, not evidence about a customer repository, customer problem, or demand.",
+      decisionBoundary:
+        "Use it only to evaluate whether the report format and limitations are understandable; do not use it to make repository or purchase decisions.",
+    });
+  }
+  return Object.freeze({
+    classification: "locally_supplied_public_tree_snapshot",
+    customerVisibleStatement:
+      "This report reflects only a locally supplied public-tree snapshot. The repository URL, default branch, and tree completeness were not remotely verified.",
+    decisionBoundary:
+      "Use it to choose the next human review question, not as proof that a repository process works or as a security, quality, or purchase verdict.",
+  });
+}
+
+function hasExpectedInputDisclosure(value, expected) {
+  return exactKeys(value, ["classification", "customerVisibleStatement", "decisionBoundary"]) &&
+    value.classification === expected.classification &&
+    value.customerVisibleStatement === expected.customerVisibleStatement &&
+    value.decisionBoundary === expected.decisionBoundary;
+}
+
 export function analyzePublicTreeSnapshot(snapshot) {
   const valid = validatePublicTreeSnapshot(snapshot);
   const paths = valid.tree.map(({ path }) => path);
@@ -269,6 +295,7 @@ export function analyzePublicTreeSnapshot(snapshot) {
       networkRequestMade: false,
       credentialRead: false,
     },
+    inputDisclosure: inputDisclosureForReport(valid.disclosure),
     marketEvidence: {
       status: "not_established_by_this_report",
       primaryLossesAddressed: ["trust", "message_understanding", "experienced_value"],
@@ -293,12 +320,20 @@ export function analyzePublicTreeSnapshot(snapshot) {
 }
 
 export function serializePublicTreeReport(report) {
+  let expectedInputDisclosure;
+  try {
+    expectedInputDisclosure = inputDisclosureForReport(validateDisclosure(report?.snapshot?.disclosure));
+  } catch {
+    expectedInputDisclosure = undefined;
+  }
   const valid = report?.reportKind === "agentic_debt_radar_public_tree_report" &&
     report?.analyzerVersion === ANALYZER_VERSION &&
     Array.isArray(report?.dimensions) &&
     report.dimensions.length === DIMENSION_IDS.length &&
     Array.isArray(report?.prioritizedActions) &&
-    report.prioritizedActions.length === 3;
+    report.prioritizedActions.length === 3 &&
+    expectedInputDisclosure !== undefined &&
+    hasExpectedInputDisclosure(report.inputDisclosure, expectedInputDisclosure);
   if (!valid) fail("Only a complete MVP public-tree report can be serialized.");
   return canonicalJson(report);
 }

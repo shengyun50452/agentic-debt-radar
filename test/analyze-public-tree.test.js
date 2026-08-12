@@ -36,6 +36,13 @@ test("synthetic public-tree fixture produces the checked-in, transparent five-di
   assert.equal(report.scope.executedRepositoryCode, false);
   assert.equal(report.scope.readRepositoryFileContents, false);
   assert.equal(report.scope.networkRequestMade, false);
+  assert.deepEqual(report.inputDisclosure, {
+    classification: "synthetic_illustration",
+    customerVisibleStatement:
+      "This is a synthetic illustration, not evidence about a customer repository, customer problem, or demand.",
+    decisionBoundary:
+      "Use it only to evaluate whether the report format and limitations are understandable; do not use it to make repository or purchase decisions.",
+  });
   assert.deepEqual(report.snapshot.provenance, {
     kind: "locally_supplied_unverified_no_remote_verification",
     repositoryUrlVerified: false,
@@ -99,6 +106,42 @@ test("snapshot provenance remains unverified even when supplied identity and pat
   assert.equal(report.snapshot.provenance.defaultBranchVerified, false);
   assert.equal(report.snapshot.provenance.treeCompletenessVerified, false);
   assert.deepEqual(report.dimensions[0].evidencePaths, []);
+});
+
+test("a visitor-supplied public snapshot receives a distinct, decision-safe trust disclosure", async () => {
+  const input = await fixture();
+  input.disclosure = {
+    synthetic: false,
+    createdFor: "visitor-selected public repository tree",
+    containsRepositoryCode: false,
+  };
+  const report = analyzePublicTreeSnapshot(input);
+  assert.deepEqual(report.inputDisclosure, {
+    classification: "locally_supplied_public_tree_snapshot",
+    customerVisibleStatement:
+      "This report reflects only a locally supplied public-tree snapshot. The repository URL, default branch, and tree completeness were not remotely verified.",
+    decisionBoundary:
+      "Use it to choose the next human review question, not as proof that a repository process works or as a security, quality, or purchase verdict.",
+  });
+});
+
+test("serializer fails closed when the required customer-visible input disclosure is absent, altered, or mismatched", async () => {
+  const report = analyzePublicTreeSnapshot(await fixture());
+  const mutations = [
+    (candidate) => { delete candidate.inputDisclosure; },
+    (candidate) => { candidate.inputDisclosure.classification = "visitor_verified_repository"; },
+    (candidate) => { candidate.inputDisclosure.customerVisibleStatement = "This report is verified."; },
+    (candidate) => { candidate.inputDisclosure.decisionBoundary = "Use this as a purchase verdict."; },
+    (candidate) => { candidate.snapshot.disclosure.synthetic = false; },
+  ];
+  for (const mutate of mutations) {
+    const candidate = JSON.parse(JSON.stringify(report));
+    mutate(candidate);
+    assert.throws(
+      () => serializePublicTreeReport(candidate),
+      (error) => error instanceof PublicTreeSnapshotError && error.code === "invalid_public_tree_snapshot",
+    );
+  }
 });
 
 test("Git-valid case-distinct paths remain distinct while matching dimensions case-insensitively", async () => {

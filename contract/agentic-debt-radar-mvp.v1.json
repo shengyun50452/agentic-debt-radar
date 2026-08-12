@@ -50,6 +50,14 @@
     ],
     "prioritizedActions": 3,
     "counterexampleRequiredForEachObservation": true,
+    "inputDisclosure": {
+      "required": true,
+      "classifications": [
+        "synthetic_illustration",
+        "locally_supplied_public_tree_snapshot"
+      ],
+      "purpose": "Make the supplied snapshot's trust boundary and permitted decision use visible in every report."
+    },
     "doesNotProduce": [
       "code-quality verdict",
       "security audit",
