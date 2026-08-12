@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "id": "agentic-debt-radar-instagram-reel-v1",
+  "assetPath": "assets/instagram/agentic-debt-radar-reel-v1.mp4",
+  "sha256": "9503ceb3e63e2a81cf0176565e8a8a355aaa3107fe0803fe3bc37a36d0d5adea",
+  "bytes": 6946378,
+  "maxBytes": 8388608,
+  "container": "mp4",
+  "video": {
+    "codec": "H264",
+    "width": 1080,
+    "height": 1920,
+    "durationMs": 33067,
+    "frameRateMilliFps": 30000,
+    "propertySystemVideoBitrate": 1552472,
+    "rotation": 0,
+    "composition": "one_untrimmed_source_clip"
+  },
+  "audio": {
+    "trackCount": 1,
+    "codec": "AAC",
+    "sampleRateHz": 48000,
+    "channels": 2,
+    "propertySystemBitrate": 128256,
+    "silenceContract": "Windows MediaComposition encoded exactly one background audio track from 48 kHz, 16-bit, stereo PCM whose every sample was zero. Windows Property System exposes no decoded loudness level; this metadata records the generation and track contract rather than claiming measured loudness."
+  },
+  "sourcePreservation": {
+    "sourceSha256": "d9cd5b1b0de7f4d1ad0d0dc9675aa32e62788894f1b3818f514d0b9eb47626d2",
+    "sourceBytes": 2824970,
+    "sourceVideo": {
+      "codec": "H264",
+      "width": 1080,
+      "height": 1920,
+      "durationMs": 33066
+    },
+    "frameQa": {
+      "sampleTimesMs": [1000, 16533, 32000],
+      "thumbnailWidth": 160,
+      "thumbnailHeight": 284,
+      "source": [
+        { "pixelSha256": "d231c9be2e4d825fed3fbcf266fbbae4aaa099d93856971e6a8bd1cb01d41223", "meanRgb": 21.76, "nonBlackPercent": 99.73 },
+        { "pixelSha256": "7f30aebd2e706ab4b98fe29fc3f14502fb78c93bcc939efb0167a86d6856c46c", "meanRgb": 19.68, "nonBlackPercent": 99.92 },
+        { "pixelSha256": "7a84ee31acd36aafbe64f7ccd02eb14afa0d930254f969d2ab2fcfaccc3336e4", "meanRgb": 29.10, "nonBlackPercent": 99.78 }
+      ],
+      "encoded": [
+        { "pixelSha256": "341be344ccb737d8a41732f20fbcfe235570046c20847923bd3155097d7673cb", "meanRgb": 21.77, "nonBlackPercent": 99.73 },
+        { "pixelSha256": "6c37a2af991e59a93e6562435bc16237bef3f420b663e993e6adf8c0f1bee01f", "meanRgb": 19.68, "nonBlackPercent": 99.91 },
+        { "pixelSha256": "d8dedbb17af68623b0d17692a627ac8c19a73b263a073004f4532d54903a04d9", "meanRgb": 29.10, "nonBlackPercent": 99.75 }
+      ],
+      "interpretation": "The hashes differ because the video was intentionally re-encoded. At first, middle, and end samples, matching non-black coverage and near-identical mean RGB provide a bounded guard against a black, sideways, or content-lost output; they are not a pixel-equality claim."
+    }
+  }
+}
