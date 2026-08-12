@@ -20,13 +20,9 @@ if (
   throw "The hard-disabled local CI wrapper does not remain inert."
 }
 
-try {
-  & $invoker -RepositoryRoot $repositoryRoot
-  throw "The blocked MVP command unexpectedly ran."
-} catch {
-  if ($_.Exception.Message -notmatch "blocked until the MVP freezes") {
-    throw
-  }
+& $invoker -RepositoryRoot $repositoryRoot
+if ($LASTEXITCODE -ne 0) {
+  throw "The frozen public MVP test command failed."
 }
 
-Write-Output "local-ci-host contract: ok (candidate remains inactive until MVP command freeze)"
+Write-Output "local-ci-host contract: ok (candidate inactive; frozen MVP tests pass)"

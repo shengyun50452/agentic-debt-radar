@@ -45,7 +45,7 @@ if (
   $candidate.credentials.registration.requiresOwnerMfa -ne $true -or
   $candidate.credentials.workflow.additionalSecretsAllowed -ne $false -or
   $candidate.runnerArtifact.artifactSha256 -ne $null -or
-  $candidate.mvpCheck.state -ne "blocked_pending_mvp_documented_test_command_freeze" -or
+  $candidate.mvpCheck.state -ne "frozen_documented_test_command" -or
   $candidate.mvpCheck.workflowActivationAllowed -ne $false -or
   $candidate.guards.wrapperHardDisabled -ne $true -or
   $candidate.guards.runnerRegistrationAllowed -ne $false -or
@@ -59,12 +59,13 @@ if (
 }
 
 if (
-  $manifest.state -ne "blocked_pending_mvp_documented_test_command_freeze" -or
-  $manifest.command -ne $null -or
+  $manifest.state -ne "frozen_documented_test_command" -or
+  $manifest.command.executable -ne "npm.cmd" -or
+  (@($manifest.command.arguments) -join ",") -ne "test,--,--test-concurrency=1" -or
   $manifest.commandMayBeInferred -ne $false -or
   $manifest.thirdPartyDependenciesAllowed -ne $false
 ) {
-  throw "The MVP CI command must remain explicitly blocked until its documented test command is frozen."
+  throw "The MVP CI command must remain the exact frozen zero-dependency test command."
 }
 
 if (Test-Path -LiteralPath $activeWorkflowPath) {

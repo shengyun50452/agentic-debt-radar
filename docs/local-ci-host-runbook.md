@@ -40,13 +40,12 @@ runner.
    ensure filesystem permissions allow only the owner and the dedicated service
    identity. Do not share a runner account, service identity, registration
    token, working directory, or cache with Market-Lab.
-4. Freeze the public MVP's documented test command in
-   `ci/repository-ci-command.v1.json`. It must move from
-   `blocked_pending_mvp_documented_test_command_freeze` to a reviewed frozen
-   state with an explicit executable and bounded arguments, be documented in
-   the `README.md` Local CI readiness section, and pass offline review. The
+4. Reverify the public MVP's frozen test command in
+   `ci/repository-ci-command.v1.json`: `npm.cmd test -- --test-concurrency=1`.
+   It must remain documented in the `README.md` Local CI readiness section and
+   pass offline review. The
    workflow must continue to call `scripts/invoke-repository-ci.ps1`, rather
-   than a file that the current MVP does not provide.
+   than inferring another command.
 5. Verify the official `actions/checkout` commit SHA already pinned in the
    candidate workflow, its `github.token` use, `contents: read`,
    `persist-credentials: false`, `fetch-depth: 1`, and exact `github.sha`

@@ -124,9 +124,9 @@ No token, runner registration credential, or service credential belongs in this
 repository.
 
 The future workflow uses only the repository's own frozen documented-check
-manifest, `ci/repository-ci-command.v1.json`; that manifest is intentionally
-blocked until the public MVP defines its test command. It will not infer or
-invent a command for files that do not yet exist.
+manifest, `ci/repository-ci-command.v1.json`: `npm.cmd test -- --test-concurrency=1`.
+It will not infer or invent another command. Freezing that command does not
+activate the workflow, register the runner, or start a service.
 
 Offline candidate checks require only Windows PowerShell:
 

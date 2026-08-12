@@ -77,7 +77,7 @@
   },
   "mvpCheck": {
     "manifestPath": "ci/repository-ci-command.v1.json",
-    "state": "blocked_pending_mvp_documented_test_command_freeze",
+    "state": "frozen_documented_test_command",
     "workflowActivationAllowed": false,
     "commandMayBeInferred": false
   },

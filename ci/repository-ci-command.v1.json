@@ -1,10 +1,17 @@
 {
   "schemaVersion": 1,
   "id": "agentic-debt-radar-public-repository-ci-command-v1",
-  "state": "blocked_pending_mvp_documented_test_command_freeze",
+  "state": "frozen_documented_test_command",
   "documentationPath": "README.md",
   "documentationHeading": "Local CI readiness",
-  "command": null,
+  "command": {
+    "executable": "npm.cmd",
+    "arguments": [
+      "test",
+      "--",
+      "--test-concurrency=1"
+    ]
+  },
   "commandMayBeInferred": false,
   "thirdPartyDependenciesAllowed": false,
   "containsCredentials": false
