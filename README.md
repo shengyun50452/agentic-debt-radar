@@ -101,3 +101,36 @@ This MVP has zero third-party dependencies. It includes local tests and a contra
 npm test
 npm run check
 ```
+
+Security or privacy concerns should be reported privately to **romispshop@gmail.com**, not through a public issue. The [public privacy notice](https://agentic-debt-radar.romispshop.workers.dev/privacy) explains the data boundary and 30-day retention period.
+
+## Local CI readiness
+
+The repository includes an **inactive**, owner-gated Windows self-hosted runner
+candidate at `deploy/local-ci-host/runner-candidate.v1.json`. It is dedicated
+only to `shengyun50452/agentic-debt-radar`: its proposed runner name, Windows
+service, runner root, work root, and label are not shared with Market-Lab or any
+other project. The candidate workflow is deliberately outside the active
+GitHub Actions directory at `.github/workflow-candidates/local-ci-host.v1.yml`.
+It accepts only trusted `main` pushes and manual runs on `main`; it contains no
+pull-request trigger and no third-party action.
+
+The candidate remains unregistered and its wrapper is hard-disabled. It cannot
+download, register, install, start, remove, or contact a runner service. Owner
+registration/MFA, official runner artifact and SHA-256 verification, a frozen
+repository test command, workflow activation, and later removal remain manual
+gates described in [`docs/local-ci-host-runbook.md`](docs/local-ci-host-runbook.md).
+No token, runner registration credential, or service credential belongs in this
+repository.
+
+The future workflow uses only the repository's own frozen documented-check
+manifest, `ci/repository-ci-command.v1.json`; that manifest is intentionally
+blocked until the public MVP defines its test command. It will not infer or
+invent a command for files that do not yet exist.
+
+Offline candidate checks require only Windows PowerShell:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-local-ci-host.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File test/local-ci-host-contract.ps1
+```

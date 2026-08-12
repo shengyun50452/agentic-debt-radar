@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "id": "agentic-debt-radar-public-local-ci-host-v1",
+  "state": "inactive_owner_gated_not_registered",
+  "repository": {
+    "slug": "shengyun50452/agentic-debt-radar",
+    "defaultBranch": "main",
+    "trustBoundary": "repository_owned_main_push_or_manual_main_only",
+    "forkOrPullRequestExecutionAllowed": false
+  },
+  "runner": {
+    "name": "agentic-debt-radar-public-local-ci-windows-01",
+    "serviceName": "agentic-debt-radar-public-local-ci-runner",
+    "runnerRoot": "C:\\agentic-debt-radar-public-local-ci-runner",
+    "workRoot": "C:\\agentic-debt-radar-public-local-ci-work",
+    "labels": [
+      "self-hosted",
+      "windows",
+      "x64",
+      "agentic-debt-radar-public-local-ci"
+    ],
+    "dedicatedToRepository": "shengyun50452/agentic-debt-radar",
+    "sharedWithMarketLab": false,
+    "sharedWithAnyOtherProject": false
+  },
+  "workflow": {
+    "inactiveSourcePath": ".github/workflow-candidates/local-ci-host.v1.yml",
+    "futureActivePath": ".github/workflows/local-ci-host.yml",
+    "activeAtCandidateTime": false,
+    "allowedEvents": [
+      "push_main",
+      "workflow_dispatch_main"
+    ],
+    "forbiddenEvents": [
+      "pull_request",
+      "pull_request_target",
+      "workflow_run",
+      "issue_comment"
+    ],
+    "permissions": {
+      "contents": "read"
+    },
+    "officialAction": {
+      "name": "actions/checkout",
+      "sha": "11bd71901bbe5b1630ceea73d27597364c9af683",
+      "persistCredentials": false,
+      "fetchDepth": 1,
+      "ref": "github.sha"
+    },
+    "thirdPartyActionsAllowed": false,
+    "exactCommitVerificationRequired": true,
+    "documentedCheckInvoker": "scripts/invoke-repository-ci.ps1"
+  },
+  "credentials": {
+    "registration": {
+      "type": "github_actions_ephemeral_runner_registration_token",
+      "ownerSupplied": true,
+      "mayBePersisted": false,
+      "mayBePrinted": false,
+      "mayBeCommitted": false,
+      "requiresOwnerMfa": true
+    },
+    "workflow": {
+      "token": "github.token",
+      "permissions": [
+        "contents:read"
+      ],
+      "persistCredentials": false,
+      "additionalSecretsAllowed": false
+    }
+  },
+  "runnerArtifact": {
+    "downloaded": false,
+    "installed": false,
+    "artifactSha256": null,
+    "ownerMustVerifyOfficialReleaseAndSha256BeforeInstall": true
+  },
+  "mvpCheck": {
+    "manifestPath": "ci/repository-ci-command.v1.json",
+    "state": "blocked_pending_mvp_documented_test_command_freeze",
+    "workflowActivationAllowed": false,
+    "commandMayBeInferred": false
+  },
+  "guards": {
+    "wrapperHardDisabled": true,
+    "runnerRegistrationAllowed": false,
+    "serviceStartAllowed": false,
+    "networkAllowedByWrapper": false,
+    "automaticInstall": false,
+    "automaticRegistration": false,
+    "automaticServiceStart": false,
+    "automaticRemoval": false,
+    "zeroThirdPartyDependencies": true
+  },
+  "countsAsMarketSignal": false,
+  "containsCredentials": false
+}

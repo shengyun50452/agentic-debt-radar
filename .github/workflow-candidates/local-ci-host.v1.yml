@@ -1,0 +1,52 @@
+# Inactive source only. Do not place this file under .github/workflows until
+# every owner gate in docs/local-ci-host-runbook.md is complete.
+name: Agentic Debt Radar public local CI candidate
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  repository-ci:
+    if: >-
+      github.repository == 'shengyun50452/agentic-debt-radar' &&
+      github.ref == 'refs/heads/main' &&
+      (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on:
+      - self-hosted
+      - windows
+      - x64
+      - agentic-debt-radar-public-local-ci
+    timeout-minutes: 15
+    steps:
+      - name: Checkout the exact trusted commit without persisting a token
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          repository: ${{ github.repository }}
+          ref: ${{ github.sha }}
+          token: ${{ github.token }}
+          persist-credentials: false
+          fetch-depth: 1
+          clean: true
+      - name: Verify the exact event commit
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          if ($env:GITHUB_SHA -notmatch '^[0-9a-f]{40}$') {
+            throw 'Expected an exact 40-character Git commit SHA.'
+          }
+          $head = (git rev-parse HEAD).Trim().ToLowerInvariant()
+          if ($head -ne $env:GITHUB_SHA.ToLowerInvariant()) {
+            throw 'The checked-out commit does not match the trusted event SHA.'
+          }
+      - name: Run this repository's frozen documented checks
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          & "$env:GITHUB_WORKSPACE\scripts\invoke-repository-ci.ps1" `
+            -RepositoryRoot $env:GITHUB_WORKSPACE
