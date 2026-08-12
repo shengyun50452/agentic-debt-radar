@@ -51,6 +51,12 @@
     "exactCommitVerificationRequired": true,
     "documentedCheckInvoker": "scripts/invoke-repository-ci.ps1"
   },
+  "integrity": {
+    "algorithm": "sha256",
+    "workflowSourceSha256": "035c51fdc8a7230aa32737f982c4a35841b7f4271e846280b97cfa2496d2c8d8",
+    "runnerWrapperSha256": "7f28fcb70eebea4d23dc9b502a75bcee7ef19538f441ad8504d9eee6143f8de9",
+    "repositoryCiManifestSha256": "14122282488f959a76a7d57f530489c0a60db0ee1cec7f3570ab4b8d2dc6cb08"
+  },
   "credentials": {
     "registration": {
       "type": "github_actions_ephemeral_runner_registration_token",

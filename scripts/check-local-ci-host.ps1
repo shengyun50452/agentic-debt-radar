@@ -1,10 +1,15 @@
 [CmdletBinding()]
-param()
+param(
+  [string]$RepositoryRoot = ""
+)
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-$repositoryRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
+if ([string]::IsNullOrWhiteSpace($RepositoryRoot)) {
+  $RepositoryRoot = Join-Path $PSScriptRoot ".."
+}
+$repositoryRoot = (Resolve-Path -LiteralPath $RepositoryRoot).Path
 $candidatePath = Join-Path $repositoryRoot "deploy\local-ci-host\runner-candidate.v1.json"
 $workflowSourcePath = Join-Path $repositoryRoot ".github\workflow-candidates\local-ci-host.v1.yml"
 $activeWorkflowPath = Join-Path $repositoryRoot ".github\workflows\local-ci-host.yml"
@@ -75,7 +80,17 @@ if (Test-Path -LiteralPath $activeWorkflowPath) {
 $workflow = Get-Content -Raw -LiteralPath $workflowSourcePath
 $wrapper = Get-Content -Raw -LiteralPath $wrapperPath
 $invoker = Get-Content -Raw -LiteralPath $invokerPath
+$workflowSourceSha256 = (Get-FileHash -LiteralPath $workflowSourcePath -Algorithm SHA256).Hash.ToLowerInvariant()
+$runnerWrapperSha256 = (Get-FileHash -LiteralPath $wrapperPath -Algorithm SHA256).Hash.ToLowerInvariant()
+$repositoryCiManifestSha256 = (Get-FileHash -LiteralPath $manifestPath -Algorithm SHA256).Hash.ToLowerInvariant()
 if (
+  $candidate.integrity.algorithm -ne "sha256" -or
+  $candidate.integrity.workflowSourceSha256 -notmatch '^[0-9a-f]{64}$' -or
+  $candidate.integrity.runnerWrapperSha256 -notmatch '^[0-9a-f]{64}$' -or
+  $candidate.integrity.repositoryCiManifestSha256 -notmatch '^[0-9a-f]{64}$' -or
+  $candidate.integrity.workflowSourceSha256 -cne $workflowSourceSha256 -or
+  $candidate.integrity.runnerWrapperSha256 -cne $runnerWrapperSha256 -or
+  $candidate.integrity.repositoryCiManifestSha256 -cne $repositoryCiManifestSha256 -or
   $workflow -match '(?im)^\s*pull_request(?:_target)?\s*:' -or
   $workflow -match '(?im)^\s*workflow_run\s*:' -or
   $workflow -notmatch '(?m)^\s*contents:\s*read\s*$' -or
@@ -90,7 +105,7 @@ if (
   $wrapper -match 'Start-Process|Invoke-WebRequest|config\.cmd|svc\.cmd|Remove-Item' -or
   $invoker -match 'Invoke-Expression'
 ) {
-  throw "The inactive local CI workflow or wrapper does not retain its fixed safety boundary."
+  throw "The hash-bound inactive local CI candidate does not retain its fixed safety boundary."
 }
 
 Write-Output "local-ci-host check: ok (inactive, repository-only, hard-disabled, no runner registration)"

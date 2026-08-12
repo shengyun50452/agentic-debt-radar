@@ -13,11 +13,22 @@ another project's runner, service, directory, label, configuration, or
 credential.
 
 The versioned candidate is `deploy/local-ci-host/runner-candidate.v1.json`.
-The workflow source is deliberately inactive at
+It SHA-256-binds the exact inactive workflow source, hard-disabled runner
+wrapper, and frozen repository-CI command manifest; those values are release
+evidence for this candidate, not an authorization to activate it.
+`.gitattributes` locks those sources and their candidate-contract check paths
+to LF so their recorded hashes remain portable across Windows clones. The workflow
+source is deliberately inactive at
 `.github/workflow-candidates/local-ci-host.v1.yml`, not under
 `.github/workflows`. `scripts/start-agentic-debt-radar-public-local-ci-runner.ps1`
 is hard-disabled and has no registration, download, service, network, or
 removal path. Its `-DryRun` is informational only.
+
+Run `powershell -NoProfile -ExecutionPolicy Bypass -File
+scripts/check-local-ci-host.ps1` to verify the recorded hashes, owner gates,
+inactive workflow location, and fixed safety boundary offline. A source change
+without its separately reviewed candidate hash update fails closed; changing a
+hash remains a candidate release-evidence change and never activates a runner.
 
 ## Preconditions before activation
 
@@ -61,6 +72,18 @@ runner.
    resulting workflow's event and permission summary before registering the
    service. Candidate preparation itself grants no registration or execution
    authority.
+
+## Project runtime policy
+
+`.codex/config.toml` is an independent project-scoped policy for direct Codex
+tasks, not a runner or deployment setting. It selects `gpt-5.6-sol` with `max`
+reasoning for the root, caps spawned child threads at eight, and defaults child
+work to `gpt-5.6-terra` with `high` reasoning. Set `xhigh` only explicitly for
+cross-module, release, security, or difficult debugging dispatch; it is never
+the default. Verify this boundary offline with
+`npm.cmd test -- --test-concurrency=1`; this includes the zero-dependency
+runtime-policy test. Local permissions, credentials, and host paths remain
+host/global configuration and are deliberately not public repository content.
 
 ## Manual registration and operation
 
